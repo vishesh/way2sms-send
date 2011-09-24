@@ -91,11 +91,16 @@ x.login(**GetAuthDetails())
 print "Login complete!\n"
 
 phonenum = raw_input("Enter phone number: ")
-message = raw_input("Enter message: ")
 
-print len(message)
-
-x.sendMessage(phonenum, message)
-
+while True:
+    try:
+        message = raw_input(">>> ")
+        if not message:
+            break
+        print len(message), "characters"
+        x.sendMessage(phonenum, message)
+    except EOFError:
+        print "\nHappy Happy Joy Joy!"
+        break
 
 
